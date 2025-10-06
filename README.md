@@ -59,11 +59,11 @@ Specifications:
   
   Develop SQL-based analytics to deliver detailed insights into:
   
-    . Customer Behavior
+   . Customer Behavior
     
-    . Product Performance
+   . Product Performance
     
-    . Sales Trends
+   . Sales Trends
 
   📂 Repository Structure: 
   
