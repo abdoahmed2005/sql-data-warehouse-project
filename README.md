@@ -41,6 +41,7 @@ Develop SQL-based analytics to deliver detailed insights into:
   . Sales Trends
 
   📂 Repository Structure: 
+  
     data-warehouse-project/
     │
     ├── datasets/                           # Raw datasets used for the project (ERP and CRM data)
