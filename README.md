@@ -1,5 +1,5 @@
 # sql-data-warehouse-project
-Building a data ware house project with SQL SERVER, ETL PROCESSING, DATA MODELING, and ANALYTICS. 
+Building a data warehouse project with SQL SERVER, ETL PROCESSING, DATA MODELING, and ANALYTICS. 
 
 
 <img width="1004" height="646" alt="image" src="https://github.com/user-attachments/assets/22ff4d48-89de-4f6a-ac88-00b637d9062b" />
