@@ -1,0 +1,74 @@
+/* ====================================================================
+    Data Exploration Script (Gold Layer)
+    --------------------------------------------------------------------
+    Description:
+    This SQL script explores the Gold Layer of the data warehouse to 
+    understand its structure, content, and time coverage.
+
+    Key Explorations:
+    1. View all tables and objects in the database
+    2. Explore column definitions for specific tables
+    3. Analyze customer demographics and origins
+    4. Explore product categories and subcategories
+    5. Check sales timeline coverage
+    6. Analyze customer age distribution (oldest vs. youngest)
+    --------------------------------------------------------------------
+    Source Schema: Golde
+    ==================================================================== */
+
+
+--------------------------------------------------------
+-- 1?? Explore All Tables / Objects in the Database
+--------------------------------------------------------
+SELECT *
+FROM INFORMATION_SCHEMA.TABLES;
+
+
+--------------------------------------------------------
+-- 2?? Explore All Columns in a Specific Table
+-- Example: Customer Dimension
+--------------------------------------------------------
+SELECT *
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'dim_customers';
+
+
+--------------------------------------------------------
+-- 3?? Explore All Countries Where Customers Come From
+--------------------------------------------------------
+SELECT DISTINCT country
+FROM Golde.dim_customers
+ORDER BY country;
+
+
+--------------------------------------------------------
+-- 4?? Explore All Product Categories and Subcategories
+--------------------------------------------------------
+SELECT DISTINCT 
+    category,
+    subCategory,
+    product_name
+FROM Golde.dim_products
+ORDER BY category, subCategory, product_name;
+
+
+--------------------------------------------------------
+-- 5?? Find Date Range of Orders (First & Last Orders)
+--     + Calculate Number of Months of Sales Available
+--------------------------------------------------------
+SELECT 
+    MIN(order_date) AS first_order_date,
+    MAX(order_date) AS last_order_date,
+    DATEDIFF(MONTH, MIN(order_date), MAX(order_date)) AS order_range_months
+FROM Golde.fact_sales;
+
+
+--------------------------------------------------------
+-- 6?? Find the Youngest and Oldest Customer
+--------------------------------------------------------
+SELECT 
+    MIN(birthdate) AS oldest_birthdate,
+    DATEDIFF(YEAR, MIN(birthdate), GETDATE()) AS oldest_age,
+    MAX(birthdate) AS youngest_birthdate,
+    DATEDIFF(YEAR, MAX(birthdate), GETDATE()) AS youngest_age
+FROM Golde.dim_customers;
